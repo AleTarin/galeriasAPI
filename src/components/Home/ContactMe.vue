@@ -1,6 +1,6 @@
 <template>
   <section class="contact">
-    <h2>Contactame</h2>
+    <h2>Contáctame</h2>
     <form action="">
       <div class="form-group row">
         <input class="form-control col-5" type="text" name="contact-name" id="contact-name" placeholder="Nombre" required>
@@ -59,6 +59,10 @@ export default {
     }
     .form-control{
       margin: 10px;
+    }
+    .mt-3{
+      margin: 20px;
+      justify-content: center;
     }
   }
 </style>
