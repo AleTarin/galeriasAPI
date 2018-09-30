@@ -1,12 +1,30 @@
 <template>
-  <div id="app">
+  <main id="app">
     <Navbar/>
     <router-view/>
     <Footer/>
-  </div>
+  </main>
 </template>
 
 <style lang="scss">
+  a, a:hover, a:active, a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .slider {
+    .carousel-caption {
+    bottom: 40% ;
+    }
+
+    .carousel-indicators {
+      li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+    }
+  }
 </style>
 
 <script>

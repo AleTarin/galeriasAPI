@@ -37,7 +37,7 @@ git commit -m "Descriptive message of the change"
 ```
 > Saves the changes in git log
 ```
-git pull origin develop
+git pull origin master
 ```
 > Get the changes already made in the repository
 
@@ -51,7 +51,7 @@ git pull origin develop
 - Enter to github
 - New Pull request
 - Select origin branch
-- Select destination branch (develop)
+- Select destination branch (master)
 - Review that the changes are correct
 - Create pull request
 - Someone else should review it

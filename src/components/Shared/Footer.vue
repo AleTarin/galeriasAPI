@@ -1,7 +1,9 @@
 <template>
-  <nav>
+  <nav class="footer">
     <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
+    <router-link to="/gallery">Galerias</router-link>
+    <router-link to="/about">Acerca de</router-link>
+    <router-link to="/contact">Contacto</router-link>
   </nav>
 </template>
 
