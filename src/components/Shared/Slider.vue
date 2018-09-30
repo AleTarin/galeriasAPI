@@ -11,7 +11,8 @@
                 @sliding-start="onSlideStart"
                 @sliding-end="onSlideEnd"
                 img-width="1024"
-                img-height="480">
+                img-height="300">
+            <!-- Add pictures attribute to change from slider of quotes or with pictures -->
             <b-carousel-slide v-if="pictures"
               v-for="(slide, index) in slides"
               :key="`slide-${index}`"
@@ -64,7 +65,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .slider {
-    padding: 0 20px;
     text-shadow: 1px 1px 2px #333;
+
+    .row {
+      margin: 0;
+    }
   }
 </style>
