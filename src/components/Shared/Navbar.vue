@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-      <img class="navbar__logo" src="https://picsum.photos/1024/480/?image=55" alt="logo">
+      <img class="navbar__logo" src="https://wildlifesafariadventures.com/wp-content/uploads/2017/01/cropped-wildlife-safari-adventures-lion-logo.png" alt="logo">
       <router-link to="/">Home</router-link>
       <router-link to="/gallery">Galerias</router-link>
       <router-link to="/about">Acerca de</router-link>
@@ -26,6 +26,7 @@ export default {
 <style scoped lang="scss">
   .navbar {
     height: 80px;
+    background: #f2f2f2;
   }
   .navbar__logo {
     height: 60%;

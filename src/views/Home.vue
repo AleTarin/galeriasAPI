@@ -2,8 +2,8 @@
   <section class="home">
     <Slider pictures :slides="slides" background="red"/>
     <AboutMe/>
-    <MyVideo/>
-    <Slider :slides="slides" background="#f3f2f3"/>
+    <MyVideo background="https://picsum.photos/1024/480/?image=55" videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" description="Video"/>
+    <Slider :slides="slides" background="skyblue"/>
     <ContactMe/>
   </section>
 </template>
@@ -38,6 +38,16 @@ export default {
           cap: 'Caption 2',
           txt: 'Description 2',
           src: 'https://picsum.photos/1024/480/?image=54'
+        },
+        {
+          cap: 'Caption 3',
+          txt: 'Description 3',
+          src: 'https://picsum.photos/1024/480/?image=56'
+        },
+        {
+          cap: 'Caption 4',
+          txt: 'Description 4',
+          src: 'https://picsum.photos/1024/480/?image=52'
         }
       ]
     }

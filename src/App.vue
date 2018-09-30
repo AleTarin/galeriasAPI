@@ -7,14 +7,17 @@
 </template>
 
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/css?family=K2D');
+  html body{
+    font-family: 'K2D', sans-serif;
+  }
   a, a:hover, a:active, a:visited {
     text-decoration: none;
     color: inherit;
   }
-
   .slider {
     .carousel-caption {
-    bottom: 40% ;
+      bottom: 40% ;
     }
 
     .carousel-indicators {
