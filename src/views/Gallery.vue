@@ -1,12 +1,12 @@
 <template>
-  <section class="about">
-    Acerca de
+  <section class="gallery">
+    Galerias
   </section>
 </template>
 
 <script>
 export default {
-  name: 'about',
+  name: 'gallery',
   components: {
   }
 }
