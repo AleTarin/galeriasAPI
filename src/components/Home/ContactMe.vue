@@ -28,7 +28,7 @@
           <option value="otros">Otros</option>
         </select>
       </div>
-      <div class="row">
+      <div class="row mt-3">
         <input type="submit col-3" class="btn btn-primary" value="Enviar">
       </div>
     </form>
