@@ -1,12 +1,7 @@
 <template>
   <section class="contact">
-<<<<<<< HEAD
     <h2>Contactame</h2>
     <form>
-=======
-    <h2>Contáctame</h2>
-    <form action="">
->>>>>>> 091c99006b16c0eb760cd0e3bb8da2a3d4fe58d8
       <div class="form-group row">
         <input class="form-control col-5" type="text" name="contact-name" id="contact-name" placeholder="Nombre" required>
         <input class="form-control col-5" type="email" name="contact-email" id="contact-email" placeholder="Email" required>
