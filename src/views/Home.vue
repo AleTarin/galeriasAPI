@@ -1,10 +1,11 @@
 <template>
   <section class="home">
-    <Slider pictures :slides="photos_main" background="red"/>
+    <Slider pictures :slides="photos_main" background="skyblue"/>
     <AboutMe/>
     <MyVideo background="https://picsum.photos/1024/480/?image=55" videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" description="Video"/>
     <Slider :slides="slides" background="skyblue"/>
     <ContactMe/>
+    <a class="back-button" href="#"><i class="fas fa-arrow-circle-up"></i></a>
   </section>
 </template>
 
@@ -83,3 +84,12 @@ export default {
   }
 }
 </script>
+
+<style>
+  .back-button {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    font-size: 50px;
+  }
+</style>

@@ -1,14 +1,14 @@
 <template>
   <section class="contact">
-    <h2>Contáctame</h2>
-    <form action="">
+    <h2>Contactame</h2>
+    <form>
       <div class="form-group row">
-        <input class="form-control col-5" type="text" name="contact-name" id="contact-name" placeholder="Nombre" required>
-        <input class="form-control col-5" type="email" name="contact-email" id="contact-email" placeholder="Email" required>
+        <input class="form-control col-5" type="text" v-model="contactName" id="contact-name" placeholder="Nombre" required>
+        <input class="form-control col-5" type="email" v-model="contactEmail" id="contact-email" placeholder="Email" required>
       </div>
       <div class="form-group row">
-        <input class="form-control col-5" type="phone" name="contact-tel" id="contact-tel" placeholder="Whatsapp(opcional)">
-        <input class="form-control col-5" type="date" name="contact-date" id="contact-date" required>
+        <input class="form-control col-5" type="phone" v-model="contactTel" id="contact-tel" placeholder="Whatsapp(opcional)">
+        <input class="form-control col-5" type="date" v-model="contactDate" id="contact-date" required>
       </div>
       <div class="form-group row">
         <select id="inputState" class="form-control col-5" required>
@@ -29,16 +29,52 @@
         </select>
       </div>
       <div class="row mt-3">
-        <input type="submit col-3" class="btn btn-primary" value="Enviar">
+        <input type="submit col-3" class="btn btn-primary" value="Enviar" @click="sendEmail()">
       </div>
     </form>
   </section>
 </template>
 
 <script>
+const $ = require('jquery')
+
 export default {
   name: 'ContactMe',
   props: {
+  },
+  data () {
+    return {
+      contactName: '',
+      contactEmail: '',
+      contactTel: '',
+      contactDate: ''
+    }
+  },
+  methods: {
+    sendEmail () {
+      $.ajax({
+        type: 'POST',
+        url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+        data: {
+          'key': 'G4DC3Y4CBM4bj6_GUavowQ',
+          'message': {
+            'from_email': this.contactEmail,
+            'to': [
+              {
+                'email': 'ale.tarin10@gmail.com',
+                'name': 'RECIPIENT NAME (OPTIONAL)',
+                'type': 'to'
+              }
+            ],
+            'autotext': 'true',
+            'subject': 'Email from' + this.contactName,
+            'html': 'Hi im am trying to contact you, im am ' + this.contactName + 'my number is ' + this.contactTel
+          }
+        }
+      }).done(function(response) {
+        console.log(response)
+      });
+    }
   }
 }
 </script>
@@ -52,6 +88,7 @@ export default {
     }
     .row {
       margin: 0;
+      justify-content: center;
     }
     .form-group{
       display: flex;
