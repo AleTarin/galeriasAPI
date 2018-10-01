@@ -1,6 +1,6 @@
 <template>
   <section class="home">
-    <Slider pictures :slides="photos_main" background="red"/>
+    <Slider pictures :slides="photos_main" background="skyblue"/>
     <AboutMe/>
     <MyVideo background="https://picsum.photos/1024/480/?image=55" videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" description="Video"/>
     <Slider :slides="slides" background="skyblue"/>

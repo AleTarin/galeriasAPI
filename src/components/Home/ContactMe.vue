@@ -3,12 +3,12 @@
     <h2>Contactame</h2>
     <form>
       <div class="form-group row">
-        <input class="form-control col-5" type="text" name="contact-name" id="contact-name" placeholder="Nombre" required>
-        <input class="form-control col-5" type="email" name="contact-email" id="contact-email" placeholder="Email" required>
+        <input class="form-control col-5" type="text" v-model="contactName" id="contact-name" placeholder="Nombre" required>
+        <input class="form-control col-5" type="email" v-model="contactEmail" id="contact-email" placeholder="Email" required>
       </div>
       <div class="form-group row">
-        <input class="form-control col-5" type="phone" name="contact-tel" id="contact-tel" placeholder="Whatsapp(opcional)">
-        <input class="form-control col-5" type="date" name="contact-date" id="contact-date" required>
+        <input class="form-control col-5" type="phone" v-model="contactTel" id="contact-tel" placeholder="Whatsapp(opcional)">
+        <input class="form-control col-5" type="date" v-model="contactDate" id="contact-date" required>
       </div>
       <div class="form-group row">
         <select id="inputState" class="form-control col-5" required>
@@ -42,6 +42,14 @@ export default {
   name: 'ContactMe',
   props: {
   },
+  data () {
+    return {
+      contactName: '',
+      contactEmail: '',
+      contactTel: '',
+      contactDate: ''
+    }
+  },
   methods: {
     sendEmail () {
       $.ajax({
@@ -50,7 +58,7 @@ export default {
         data: {
           'key': 'G4DC3Y4CBM4bj6_GUavowQ',
           'message': {
-            'from_email': 'YOUR@EMAIL.HERE',
+            'from_email': this.contactEmail,
             'to': [
               {
                 'email': 'ale.tarin10@gmail.com',
@@ -59,8 +67,8 @@ export default {
               }
             ],
             'autotext': 'true',
-            'subject': 'YOUR SUBJECT HERE!',
-            'html': 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
+            'subject': 'Email from' + this.contactName,
+            'html': 'Hi im am trying to contact you, im am ' + this.contactName + 'my number is ' + this.contactTel
           }
         }
       }).done(function(response) {
