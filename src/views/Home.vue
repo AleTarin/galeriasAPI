@@ -1,6 +1,6 @@
 <template>
   <section class="home">
-    <Slider pictures :slides="slides" background="red"/>
+    <Slider pictures :slides="photos_main" background="red"/>
     <AboutMe/>
     <MyVideo background="https://picsum.photos/1024/480/?image=55" videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" description="Video"/>
     <Slider :slides="slides" background="skyblue"/>
@@ -49,6 +49,35 @@ export default {
           cap: 'Caption 4',
           txt: 'Description 4',
           src: 'https://picsum.photos/1024/480/?image=52'
+        }
+      ],
+      photos_main:
+      [
+        /*
+        {
+          //Foto 1
+          src: require('@/assets/Fotos_Main/Foto_Main1.jpg')
+        },
+        */
+        {
+          //Foto 2
+          src: require('@/assets/Fotos_Main/Foto_Main2.jpg')
+        },
+        {
+          //Foto 3
+          src: require('@/assets/Fotos_Main/Foto_Main3.jpg')
+        },
+        {
+          //Foto 4
+          src: require('@/assets/Fotos_Main/Foto_Main4.jpg')
+        },
+        {
+          //Foto 5
+          src: require('@/assets/Fotos_Main/Foto_Main5.jpg')
+        },
+        {
+          //Foto 6
+          src: require('@/assets/Fotos_Main/Foto_Main6.jpg')
         }
       ]
     }
