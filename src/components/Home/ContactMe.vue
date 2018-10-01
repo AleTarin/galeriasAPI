@@ -1,7 +1,7 @@
 <template>
   <section class="contact">
     <h2>Contactame</h2>
-    <form action="">
+    <form>
       <div class="form-group row">
         <input class="form-control col-5" type="text" name="contact-name" id="contact-name" placeholder="Nombre" required>
         <input class="form-control col-5" type="email" name="contact-email" id="contact-email" placeholder="Email" required>
@@ -29,16 +29,44 @@
         </select>
       </div>
       <div class="row mt-3">
-        <input type="submit col-3" class="btn btn-primary" value="Enviar">
+        <input type="submit col-3" class="btn btn-primary" value="Enviar" @click="sendEmail()">
       </div>
     </form>
   </section>
 </template>
 
 <script>
+const $ = require('jquery')
+
 export default {
   name: 'ContactMe',
   props: {
+  },
+  methods: {
+    sendEmail () {
+      $.ajax({
+        type: 'POST',
+        url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+        data: {
+          'key': 'G4DC3Y4CBM4bj6_GUavowQ',
+          'message': {
+            'from_email': 'YOUR@EMAIL.HERE',
+            'to': [
+              {
+                'email': 'ale.tarin10@gmail.com',
+                'name': 'RECIPIENT NAME (OPTIONAL)',
+                'type': 'to'
+              }
+            ],
+            'autotext': 'true',
+            'subject': 'YOUR SUBJECT HERE!',
+            'html': 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
+          }
+        }
+      }).done(function(response) {
+        console.log(response)
+      });
+    }
   }
 }
 </script>
@@ -52,6 +80,7 @@ export default {
     }
     .row {
       margin: 0;
+      justify-content: center;
     }
     .form-group{
       display: flex;

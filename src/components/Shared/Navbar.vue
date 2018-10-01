@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <header class="navbar">
       <img class="navbar__logo" src="https://wildlifesafariadventures.com/wp-content/uploads/2017/01/cropped-wildlife-safari-adventures-lion-logo.png" alt="logo">
       <router-link to="/">Home</router-link>
       <router-link to="/gallery">Galerias</router-link>
@@ -11,7 +11,7 @@
         <a href="#"><i class="fab fa-whatsapp"></i></a>
         <a href="#"><i class="fab fa-pinterest-p"></i></a>
       </div>
-  </nav>
+  </header>
 </template>
 
 <script>

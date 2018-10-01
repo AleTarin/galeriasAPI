@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar">
+  <footer class="navbar">
       <img class="navbar__logo" src="https://wildlifesafariadventures.com/wp-content/uploads/2017/01/cropped-wildlife-safari-adventures-lion-logo.png" alt="logo">
       <div class="footer_info">
-          <i class="fas fa-phone"></i> 01325 382 555 <br>
-          <i class="far fa-envelope"></i> INFO@STANSEATON.COM <br>
-          <i class="fas fa-home"></i> 37 DUKE STREET • DARLINGTON • COUNTY DURHAM • DL3 7RX
+          01325 382 555 <i class="fas fa-phone"></i> <br>
+          INFO@STANSEATON.COM  <i class="far fa-envelope"></i><br>
+          37 DUKE STREET • DARLINGTON • COUNTY DURHAM • DL3 7RX<i class="fas fa-home"></i>
       </div>
       <div class="navbar__social">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -12,7 +12,7 @@
         <a href="#"><i class="fab fa-whatsapp"></i></a>
         <a href="#"><i class="fab fa-pinterest-p"></i></a>
       </div>
-  </nav>
+  </footer>
 </template>
 
 <script>
