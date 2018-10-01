@@ -1,13 +1,16 @@
 <template>
   <section class="about">
-    Acerca de
+    <AboutMe/>
   </section>
 </template>
 
 <script>
+import AboutMe from '@/components/Home/AboutMe.vue'
+
 export default {
   name: 'about',
   components: {
+    AboutMe
   }
 }
 </script>

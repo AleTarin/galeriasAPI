@@ -15,6 +15,7 @@
     text-decoration: none;
     color: inherit;
   }
+
   .slider {
     .carousel-caption {
       bottom: 40% ;

@@ -29,6 +29,11 @@ export default {
 <style scoped lang="scss">
 .aboutMe {
 padding: 0 15px;
+
+  .col { 
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .info-container {
