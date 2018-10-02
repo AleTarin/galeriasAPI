@@ -53,12 +53,10 @@ export default {
       ],
       photos_main:
       [
-        /*
         {
           //Foto 1
           src: require('@/assets/Fotos_Main/Foto_Main1.jpg')
         },
-        */
         {
           //Foto 2
           src: require('@/assets/Fotos_Main/Foto_Main2.jpg')

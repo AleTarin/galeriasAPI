@@ -48,8 +48,6 @@ export default {
       margin: 0;
       height: 500px;
       width: 70%;
-      min-width: 500px;
-      max-width: 1500px;
       background-position: center;
       background-size: cover;
     }
