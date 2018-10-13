@@ -16,17 +16,17 @@
             <b-carousel-slide v-if="pictures"
               v-for="(slide, index) in slides"
               :key="`slide-${index}`"
-              :caption="slide.cap"
-              :text="slide.txt"
+              :caption="slide.caption"
+              :text="slide.description"
               :img-src="slide.src"
-              :img-alt="slide.cap"/>
+              :img-alt="slide.contentDescription"/>
             <b-carousel-slide v-if="!pictures"
               v-for="(slide, index) in slides"
               :key="`slide-${index}`"
-              :caption="slide.cap"
-              :text="slide.txt"
+              :caption="slide.caption"
+              :text="slide.description"
               img-blank
-              :img-alt="slide.cap"/>
+              :img-alt="slide.contentDescription"/>
           </b-carousel>
       </div>
     </div>
