@@ -26,14 +26,26 @@ export default {
 <style scoped lang="scss">
   .navbar {
     height: 80px;
-    background: #f2f2f2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    display: flex;
+    width: 100vw;
+    text-shadow: 2px 2px black;
+    color: white;
   }
   .navbar__logo {
     height: 60%;
+    background: white;
+    border-radius: 50%;
   }
   .navbar__social {
     display: flex;
     justify-content: space-around;
     width: 10%;
+    @media only screen and (max-width: 600px) {
+		  display: none;
+	  }
   }
 </style>

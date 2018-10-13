@@ -26,16 +26,20 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .navbar {
-    height: 150px;
+    min-height: 150px;
     background: #f2f2f2;
+    display: flex;
+    justify-content: space-around;
   }
   .navbar__logo {
     height: 60%;
+    max-height: 100px;
   }
   .navbar__social {
     display: flex;
     justify-content: space-around;
     width: 10%;
+    min-width: 150px;
   }
   .footer_info {
     text-align: center;
