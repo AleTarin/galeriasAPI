@@ -68,6 +68,7 @@ export default {
     position: fixed;
     right: 10px;
     bottom: 10px;
-    font-size: 50px;
+    z-index: 2;
+    font-size: 30px;
   }
 </style>

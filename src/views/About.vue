@@ -14,3 +14,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .about {
+    margin: 80px 20px;
+  }
+</style>
