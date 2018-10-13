@@ -1,8 +1,11 @@
 <template>
   <header class="navbar">
-      <img class="navbar__logo" src="https://wildlifesafariadventures.com/wp-content/uploads/2017/01/cropped-wildlife-safari-adventures-lion-logo.png" alt="logo">
+      <span>
+            <img class="navbar__logo" src="https://wildlifesafariadventures.com/wp-content/uploads/2017/01/cropped-wildlife-safari-adventures-lion-logo.png" alt="logo">
+            Victor Romero
+      </span>
       <router-link to="/">Home</router-link>
-      <router-link to="/gallery">Galerias</router-link>
+      <router-link to="/galleries">Galerias</router-link>
       <router-link to="/about">Acerca de</router-link>
       <router-link to="/contact">Contacto</router-link>
       <div class="navbar__social">
@@ -36,7 +39,7 @@ export default {
     color: white;
   }
   .navbar__logo {
-    height: 60%;
+    height: 40px;
     background: white;
     border-radius: 50%;
   }
@@ -45,7 +48,7 @@ export default {
     justify-content: space-around;
     width: 10%;
     @media only screen and (max-width: 600px) {
-		  display: none;
-	  }
+      display: none;
+    }
   }
 </style>

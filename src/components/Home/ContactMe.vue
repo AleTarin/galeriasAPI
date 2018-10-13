@@ -1,17 +1,17 @@
 <template>
   <section class="contact">
     <h2>Contactame</h2>
-    <form>
+    <form @submit="sendEmail()">
       <div class="form-group row">
-        <input class="form-control col-5" type="text" v-model="contactName" id="contact-name" placeholder="Nombre" required>
-        <input class="form-control col-5" type="email" v-model="contactEmail" id="contact-email" placeholder="Email" required>
+        <input :class="['form-control', 'col-5', {'is-invalid': dirty && !contactName }]" type="text" v-model="contactName" placeholder="Nombre" required>
+        <input :class="['form-control', 'col-5', {'is-invalid': dirty && !contactEmail || validEmail()  }]" type="email" v-model="contactEmail" placeholder="Email" required>
       </div>
       <div class="form-group row">
-        <input class="form-control col-5" type="phone" v-model="contactTel" id="contact-tel" placeholder="Whatsapp(opcional)">
-        <input class="form-control col-5" type="date" v-model="contactDate" id="contact-date" required>
+        <input class="form-control col-5" type="phone" v-model="contactTel" placeholder="Whatsapp(opcional)">
+        <input :class="['form-control', 'col-5', {'is-invalid': dirty && !contactDate }]" type="date" v-model="contactDate" required>
       </div>
       <div class="form-group row">
-        <select id="inputState" class="form-control col-5" required>
+        <select :class="['form-control', 'col-5', {'is-invalid': dirty && !contactEvent }]" v-model="contactEvent" required>
           <option selected disabled> Tipo de Evento </option>
           <option value="Evento Corporativo"> Evento Corporativo </option>
           <option value="Baby Shower"> Baby Shower </option>
@@ -20,7 +20,7 @@
           <option value="Photoshoot"> Photoshoot </option>
           <option value="otro">Otro</option>
         </select>
-        <select id="inputState" class="form-control col-5" required>
+        <select :class="['form-control', 'col-5', {'is-invalid': dirty && !contactSocial }]" v-model="contactSocial" required>
           <option selected disabled>¿Cómo te enteraste de mí?</option>
           <option value="Facebook">Facebook</option>
           <option value="Instagram">Instagram</option>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-const $ = require('jquery')
+import axios from 'axios'
 
 export default {
   name: 'ContactMe',
@@ -47,33 +47,42 @@ export default {
       contactName: '',
       contactEmail: '',
       contactTel: '',
-      contactDate: ''
+      contactDate: '',
+      contactEvent: '',
+      contactSocial: '',
+      dirty: false,
+      errors: []
     }
   },
   methods: {
+    validEmail: function () {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(this.contactEmail)
+    },
     sendEmail () {
-      $.ajax({
-        type: 'POST',
-        url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-        data: {
-          'key': 'G4DC3Y4CBM4bj6_GUavowQ',
-          'message': {
-            'from_email': this.contactEmail,
-            'to': [
-              {
-                'email': 'ale.tarin10@gmail.com',
-                'name': 'RECIPIENT NAME (OPTIONAL)',
-                'type': 'to'
-              }
-            ],
-            'autotext': 'true',
-            'subject': 'Email from' + this.contactName,
-            'html': 'Hi im am trying to contact you, im am ' + this.contactName + 'my number is ' + this.contactTel
-          }
-        }
-      }).done(function(response) {
-        console.log(response)
-      });
+      this.dirty = true
+      if (
+        this.contactName &&
+        this.contactEmail &&
+        this.contactDate &&
+        this.contactEvent &&
+        this.contactSocial
+      ) {
+        axios
+          .post('http://localhost:8081/api/email',
+            {
+              contactName: this.contactName,
+              contactEmail: this.contactEmail,
+              contactTel: this.contactTel,
+              contactDate: this.contactDate,
+              contactEvent: this.contactEvent,
+              contactSocial: this.contactSocial
+            })
+          .then(response => {})
+          .catch(e => {
+            this.errors.push(e)
+          })
+      }
     }
   }
 }
@@ -82,7 +91,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .contact {
-    padding: 32px 0;
+    padding: 50px 0;
     h2 {
       text-align: center;
     }

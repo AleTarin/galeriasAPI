@@ -23,7 +23,7 @@ export default {
     cursor: pointer;
     justify-content: center;
     align-items: center;
-    z-index: 20;
+    z-index: 1000;
     top: 0;
     left: 0;
     background-color: rgba($color: #000000, $alpha: 0.5);

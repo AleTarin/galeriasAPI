@@ -14,3 +14,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .contact {
+    margin: 80px 20px;
+  }
+</style>
