@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { db } from '../main'
 
 // @ is an alias to /src
 // Import whatever component you are gone to use
@@ -31,53 +32,32 @@ export default {
       slides:
       [
         {
-          cap: 'Caption 1',
-          txt: 'Description 1',
+          caption: 'Caption 1',
+          description: 'Description 1',
           src: 'https://picsum.photos/1024/480/?image=55'
         },
         {
-          cap: 'Caption 2',
-          txt: 'Description 2',
+          caption: 'Caption 2',
+          description: 'Description 2',
           src: 'https://picsum.photos/1024/480/?image=54'
         },
         {
-          cap: 'Caption 3',
-          txt: 'Description 3',
+          caption: 'Caption 3',
+          description: 'Description 3',
           src: 'https://picsum.photos/1024/480/?image=56'
         },
         {
-          cap: 'Caption 4',
-          txt: 'Description 4',
+          caption: 'Caption 4',
+          description: 'Description 4',
           src: 'https://picsum.photos/1024/480/?image=52'
         }
       ],
-      photos_main:
-      [
-        {
-          //Foto 1
-          src: require('@/assets/Fotos_Main/Foto_Main1.jpg')
-        },
-        {
-          //Foto 2
-          src: require('@/assets/Fotos_Main/Foto_Main2.jpg')
-        },
-        {
-          //Foto 3
-          src: require('@/assets/Fotos_Main/Foto_Main3.jpg')
-        },
-        {
-          //Foto 4
-          src: require('@/assets/Fotos_Main/Foto_Main4.jpg')
-        },
-        {
-          //Foto 5
-          src: require('@/assets/Fotos_Main/Foto_Main5.jpg')
-        },
-        {
-          //Foto 6
-          src: require('@/assets/Fotos_Main/Foto_Main6.jpg')
-        }
-      ]
+      photos_main: []
+    }
+  },
+  firestore () {
+    return {
+      photos_main: db.collection('topSlider')
     }
   }
 }
