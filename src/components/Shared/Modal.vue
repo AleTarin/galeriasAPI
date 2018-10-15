@@ -42,6 +42,7 @@ export default {
       position: fixed;
       padding: 10px;
       top: 10px;
+      z-index: 2000;
       right: 10px;
       font-size: 32px;
       font-weight: bolder;
