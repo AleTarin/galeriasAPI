@@ -1,7 +1,6 @@
 var nodemailer = require('nodemailer')
 // email sender function
 
-// TODO: Change email data
 exports.sendEmail = function (req, res) {
 // Definimos el transporter
 
@@ -9,8 +8,8 @@ exports.sendEmail = function (req, res) {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'ale.tarin10@gmail.com',
-      pass: 'bubblebutt'
+      user: 'vickromero.foto@gmail.com',
+      pass: 'A01034854!'
     }
   })
   // Definimos el email
