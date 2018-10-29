@@ -25,7 +25,8 @@
     "vue": "^2.5.17",
     "vue-gallery": "^1.4.0",
     "vue-router": "^3.0.1",
-    "vuefire": "^2.0.0-alpha.15"
+    "vuefire": "^2.0.0-alpha.15",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0-beta.53",

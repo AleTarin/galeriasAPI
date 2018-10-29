@@ -16,6 +16,7 @@
     </ul>
     <div class="row">
       <Thumbnail
+        v-if="isAdmin || Thumbnail.isPublic"
         v-for="Thumbnail in filterGalleries"
         :key="Thumbnail.title"
         :src="Thumbnail.thumbnailSrc"
@@ -27,7 +28,7 @@
 
 <script>
 import Thumbnail from '../components/Gallery/Thumbnail.vue'
-import { db } from '../main'
+import { db, store } from '@/main'
 
 export default {
   name: 'gallery',
@@ -38,7 +39,8 @@ export default {
     return {
       galleries: [],
       categories: ['Todos', 'Photoshoots', 'Eventos Sociales', 'Eventos Corporativos'],
-      filter: 'Todos'
+      filter: 'Todos',
+      isAdmin: store.state.isAdmin
     }
   },
   computed: {

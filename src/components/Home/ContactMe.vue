@@ -4,7 +4,7 @@
     <form @submit="sendEmail()">
       <div class="form-group row">
         <input :class="['form-control', 'col-5', {'is-invalid': dirty && !contactName }]" type="text" v-model="contactName" placeholder="Nombre" required>
-        <input :class="['form-control', 'col-5', {'is-invalid': dirty && !contactEmail || validEmail()  }]" type="email" v-model="contactEmail" placeholder="Email" required>
+        <input :class="['form-control', 'col-5', {'is-invalid': dirty && (!contactEmail || !validEmail())  }]" type="email" v-model="contactEmail" placeholder="Email" required>
       </div>
       <div class="form-group row">
         <input class="form-control col-5" type="phone" v-model="contactTel" placeholder="Whatsapp(opcional)">
@@ -66,7 +66,8 @@ export default {
         this.contactEmail &&
         this.contactDate &&
         this.contactEvent &&
-        this.contactSocial
+        this.contactSocial &&
+        this.validEmail()
       ) {
         axios
           .post('http://localhost:8081/api/email',

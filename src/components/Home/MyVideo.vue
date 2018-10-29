@@ -1,37 +1,58 @@
 <template>
   <section class="my-video">
     <Modal v-if="openModal" @close="openModal = false">
-      <iframe width="1280" height="720" :src="videoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe width="1280" height="720" :src="info.videoSrc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </Modal>
-    <figure :style="`background-image: url('${background}');`">
+    <figure :style="`background-image: url('${info.imgSrc}');`">
       <div class="my-video__container" @click="toggleModal()">
-        <i class="far fa-play-circle"></i> {{description}}
+        <i class="far fa-play-circle"></i> {{info.text}}
       </div>
     </figure>
+    <details v-if="isAdmin" class="my-video__details">
+      <p>Texto descriptivo</p>
+      <Editable :editable="isAdmin" :content="info.text" @update='update("text", $event)'/>
+      <p>Link del Video</p>
+      <Editable :editable="isAdmin" :content="info.videoSrc" @update='update("videoSrc", $event)'/>
+      <p>Link de la imagen</p>
+      <Editable :editable="isAdmin" :content="info.imgSrc" @update='update("imgSrc", $event)'/>
+    </details>
   </section>
 </template>
 
 <script>
 import Modal from '@/components/Shared/Modal.vue'
+import Editable from '@/components/Shared/Editable.vue'
+import { db, store } from '@/main'
 
 export default {
   name: 'MyVideo',
-  props: {
-    videoUrl: String,
-    background: String,
-    description: String
-  },
   components: {
-    Modal
+    Modal,
+    Editable
   },
   data () {
     return {
-      openModal: false
+      openModal: false,
+      info: Object,
+      isAdmin: store.state.isAdmin
+    }
+  },
+  firestore () {
+    return {
+      info: db.collection('Info').doc('video')
     }
   },
   methods: {
     toggleModal () {
       this.openModal = !this.openModal
+    },
+    update (type, event) {
+      if (!event) {
+        event = type
+      }
+      db.collection('Info').doc('video').update({
+        [type]: event
+      })
     }
   }
 }
@@ -43,6 +64,8 @@ export default {
     padding: 32px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     figure {
       padding: 50px;
       margin: 0;
@@ -51,7 +74,13 @@ export default {
       background-position: center;
       background-size: cover;
     }
-    .my-video__container {
+    &__details {
+      p {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+    }
+    &__container {
       cursor: pointer;
       color: white;
       font-size: 50px;

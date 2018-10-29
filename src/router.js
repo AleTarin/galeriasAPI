@@ -7,6 +7,7 @@ import Galleries from './views/Galleries.vue'
 import Contact from './views/Contact.vue'
 import About from './views/About.vue'
 import Gallery from './views/Gallery.vue'
+import LogIn from './views/LogIn.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -15,6 +16,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/admin',
+      name: 'login',
+      component: LogIn
     },
     {
       path: '/galleries',

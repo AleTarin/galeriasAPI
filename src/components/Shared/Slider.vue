@@ -25,8 +25,7 @@
               :key="`slide-${index}`"
               :caption="slide.caption"
               :text="slide.description"
-              img-blank
-              :img-alt="slide.contentDescription"/>
+              img-blank/>
           </b-carousel>
       </div>
     </div>
@@ -70,5 +69,8 @@ export default {
     .row {
       margin: 0;
     }
+  }
+  .carousel-caption {
+    padding: 0;
   }
 </style>

@@ -14,9 +14,9 @@ exports.sendEmail = function (req, res) {
   })
   // Definimos el email
   var mailOptions = {
-    from: 'Galerias API',
-    to: req.body.contactEmail,
-    subject: `Page email from ${req.body.contactName}`,
+    from: req.body.contactEmail,
+    to: 'vickromero.foto@gmail.com',
+    subject: `${req.body.contactName} page email`,
     text:
     `
     De: ${req.body.contactName}

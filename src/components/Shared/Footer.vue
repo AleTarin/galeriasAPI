@@ -1,25 +1,58 @@
 <template>
-  <footer class="navbar">
-      <img class="navbar__logo" src="https://wildlifesafariadventures.com/wp-content/uploads/2017/01/cropped-wildlife-safari-adventures-lion-logo.png" alt="logo">
-      Victor Romero
-      <div class="footer_info">
-          <i class="fas fa-phone"></i> 01325 382 555 <br>
-          <i class="far fa-envelope"></i>INFO@STANSEATON.COM  <br>
-          <i class="fas fa-home"></i> 37 DUKE STREET • DARLINGTON • COUNTY DURHAM • DL3 7RX
-      </div>
-      <div class="navbar__social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-      </div>
-  </footer>
+  <section>
+    <footer class="navbar">
+        <img class="navbar__logo" :src="footer.logoSrc" alt="logo">
+        <Editable :editable="isAdmin" :content="footer.name" @update='update("name", $event)'/>
+        <div class="footer_info">
+            <i class="fas fa-phone"/><Editable :editable="isAdmin" :content="footer.phone" @update='update("phone", $event)'/><br>
+            <i class="far fa-envelope"/><Editable :editable="isAdmin" :content="footer.email" @update='update("email", $event)'/><br>
+            <i class="fas fa-home"></i> <Editable :editable="isAdmin" :content="footer.home" @update='update("home", $event)'/>
+        </div>
+        <div class="navbar__social">
+          <a :href="footer.facebook"><i class="fab fa-facebook-f"></i></a>
+          <a :href="footer.twitter"><i class="fab fa-instagram"></i></a>
+          <a :href="footer.instagram"><i class="fab fa-twitter"></i></a>
+        </div>
+      <details v-show="isAdmin">
+        <p>Logo</p>
+        <Editable :editable="true" :content="footer.logoSrc" @update='update("logoSrc", $event)'/><br>
+        <i class="fab fa-facebook-f"/><Editable :editable="true" :content="footer.facebook" @update='update("facebook", $event)'/><br>
+        <i class="fab fa-twitter"/><Editable :editable="true" :content="footer.twitter" @update='update("twitter", $event)'/><br>
+        <i class="fab fa-instagram"/><Editable :editable="true" :content="footer.instagram" @update='update("instagram", $event)'/>
+      </details>
+    </footer>
+  </section>
 </template>
 
 <script>
+import { db, store } from '@/main'
+import Editable from '@/components/Shared/Editable.vue'
+
 export default {
   name: 'Footer',
-  props: {
+  components: {
+    Editable
+  },
+  data () {
+    return {
+      footer: Object,
+      isAdmin: store.state.isAdmin
+    }
+  },
+  firestore () {
+    return {
+      footer: db.collection('Info').doc('footer')
+    }
+  },
+  methods: {
+    update (type, event) {
+      if (!event) {
+        event = type
+      }
+      db.collection('Info').doc('footer').update({
+        [type]: event
+      })
+    }
   }
 }
 </script>
@@ -32,6 +65,17 @@ export default {
     display: flex;
     justify-content: space-around;
     padding: 0 50px;
+    details {
+      width: 100%;
+      i {
+      margin-right: 12px;
+      width: 10px;
+      }
+      p {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+    }
   }
   .navbar__logo {
     height: 60%;
@@ -43,8 +87,12 @@ export default {
     justify-content: space-around;
     width: 10%;
     min-width: 150px;
+    a{
+      color: black;
+    }
   }
   .footer_info {
+    width: 50%;
     text-align: center;
   }
 </style>

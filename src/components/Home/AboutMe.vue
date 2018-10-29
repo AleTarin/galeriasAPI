@@ -2,25 +2,53 @@
 <section class="aboutMe">
 <b-row no-gutters>
 <b-col sm="0" md="6">
-<b-img class="img" src="https://picsum.photos/300/150/?image=41" fluid-grow alt="Image of me" />
+<b-img class="img" :src="info.imgSrc" fluid-grow alt="Image of me" />
 </b-col>
 <b-col sm="12" md="6">
 <b-container fluid class="info-container">
 <div class="inner-container">
-<h1 class="mb-5">¡Hola! Soy Vick Romero</h1>
-<p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<h3><router-link to="/about">Conoce más sobre mi </router-link></h3>
+<h1 class="mb-5"><Editable :editable="isAdmin" :content="info.title" @update='update("title", $event)'/></h1>
+<p class="mb-4"><Editable :editable="isAdmin" :content="info.body" @update='update("body", $event)'/></p>
+<h3><router-link to="/about"><Editable :editable="isAdmin" :content="info.link" @update='update("link", $event)'/></router-link></h3>
 </div>
 </b-container>
 </b-col>
 </b-row>
+<details  class="aboutMe__details" v-if="isAdmin">
+<p>Link de la imagen</p>
+<Editable :editable="isAdmin" :content="info.imgSrc" @update='update("imgSrc", $event)'/>
+</details>
 </section>
 </template>
 <script>
+import Editable from '@/components/Shared/Editable.vue'
+import { db, store } from '@/main'
 
 export default {
   name: 'AboutMe',
-  props: {
+  components: {
+    Editable
+  },
+  data () {
+    return {
+      info: Object,
+      isAdmin: store.state.isAdmin
+    }
+  },
+  firestore () {
+    return {
+      info: db.collection('Info').doc('aboutme')
+    }
+  },
+  methods: {
+    update (type, event) {
+      if (!event) {
+        event = type
+      }
+      db.collection('Info').doc('aboutme').update({
+        [type]: event
+      })
+    }
   }
 }
 </script>
@@ -29,7 +57,12 @@ export default {
 <style scoped lang="scss">
 .aboutMe {
 padding: 0 15px;
-
+  &__details {
+    p {
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+  }
   .col {
     padding-left: 0;
     padding-right: 0;

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { db } from '../main'
+import { db } from '@/main'
 import Modal from '@/components/Shared/Modal.vue'
 import Slider from '@/components/Shared/Slider.vue'
 
